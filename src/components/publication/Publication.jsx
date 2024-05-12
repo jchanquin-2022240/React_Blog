@@ -31,7 +31,7 @@ export const Publication = ({ publications }) => {
                     </div>
                     <div className='container-card'>
                         <label>link</label>
-                        <a href={publication.link}/>
+                        <a href={publication.link}>{publication.link}</a>
                     </div>
                     <div className='container-card'>
                         <label>Date</label>
