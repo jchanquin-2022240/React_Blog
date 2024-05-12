@@ -1,9 +1,9 @@
 import './publication.css'
 
-export const Publication = ({ publication }) => {
+export const Publication = ({ publications }) => {
     return (
         <div>
-            {publication.map((publication, index) => (
+            {publications.map((publication, index) => (
                 <div className='post-card' key={index}>
                     <div className='container-card'>
                         <label>Título</label>
@@ -31,7 +31,7 @@ export const Publication = ({ publication }) => {
                     </div>
                     <div className='container-card'>
                         <label>link</label>
-                        <a href={publication.link}></a>
+                        <a href={publication.link}/>
                     </div>
                     <div className='container-card'>
                         <label>Date</label>

@@ -1,7 +1,7 @@
-import React, { useSate, useEffect } from 'react';
-import { Navbar} from '../../components/navbar/Navbar';
+import React, { useState, useEffect } from 'react';
+import { Navbar } from '../../components/navbar/Navbar';
 import { Footer } from '../../components/footer/Footer';
-import { getPost } from '../../services';
+import { getPosts } from '../../services';
 import { Publication } from '../../components/publication/Publication';
 
 export const DashboardPage = () => {
@@ -10,10 +10,10 @@ export const DashboardPage = () => {
     useEffect(() => {
         const fetchPublications = async () => {
             try {
-                const response = await getPost();
-                console.log(response)
+                const response = await getPosts();
+                console.log(response, "oa")
                 if (!response.error) {
-                    setPublication(response.data || []);
+                    setPublication(response.data.publications || []);
                 } else {
                     console.log('Error:', response.data);
                 }
@@ -25,6 +25,6 @@ export const DashboardPage = () => {
     }, []);
 
     return (
-        <Publication publication={publication}/>
+        <Publication publications={publication} />
     )
 }
