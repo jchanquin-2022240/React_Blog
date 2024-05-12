@@ -21,7 +21,7 @@ export const addComment = async (id, commmentUser, commentMain) => {
         console.log('id', id)
         console.log('commmentUser', commmentUser)
         console.log('commentMain', commentMain)
-        return await api.put(`/publication/addComment/${id}`, ${ commmentUser }, ${ commentMain })
+        return await api.put(`/publication/addComment/${id}`, { commmentUser, commentMain })
     } catch (e) {
         ruturn({
             error: true,
