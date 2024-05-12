@@ -63,24 +63,24 @@ export const Comment = ({ publicationId}) => {
             commentMain: { value: "" },
         });
 
-        fetchPublicationDetails();
+        // fetchPublicationDetails();
     };
 
-    const fetchPublicationDetails = async () => {
-        try {
-            if (publicationId) {
-                const data = await searchPost(publicationId);
-                setComment(data);
-            } else {
-                console.error('No publicationId provided');
-            }
-        } catch (error) {
-            console.error('Error fetching publication details:', error);
-        }
-    };
+    // const fetchPublicationDetails = async () => {
+    //     try {
+    //         if (publicationId) {
+    //             const data = await searchPost(publicationId);
+    //             setComment(data);
+    //         } else {
+    //             console.error('No publicationId provided');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching publication details:', error);
+    //     }
+    // };
     
     useEffect(() => {
-        fetchPublicationDetails();
+        // fetchPublicationDetails();
         console.log('Fetching publication details for id:', publicationId);
     }, [publicationId]);
 
