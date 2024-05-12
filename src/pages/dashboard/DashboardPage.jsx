@@ -24,6 +24,7 @@ export const DashboardPage = () => {
                 const response = await getPosts();
                 if (!response.error) {
                     setPublication(response.data.publications || []);
+                    console.log({ publications: response.data.publications })
                 } else {
                     console.log('Error:', response.data);
                 }
@@ -36,11 +37,9 @@ export const DashboardPage = () => {
 
     return (
         <>
-        {postById === null ? ( 
-        <Publication publications={publication} onMoreInfoClick={handleMoreInfoClick}/>
-        ) : (
-            <Comment publicationId={postById} />
-        )}
+            {postById === null && (
+                <Publication publications={publication} onMoreInfoClick={handleMoreInfoClick} />
+            )}
         </>
     )
 }

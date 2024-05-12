@@ -1,4 +1,5 @@
 import './publication.css'
+import { Comment } from '../comment/Comment';
 
 export const Publication = ({ publications, onMoreInfoClick }) => {
     return (
@@ -22,6 +23,7 @@ export const Publication = ({ publications, onMoreInfoClick }) => {
                         <div>{publication.tools}</div>
                     </div>
                     <button onClick={() => onMoreInfoClick(publication._id)}>More info</button>
+                    <Comment publicationId={publication._id} comments={publication.comments} />
                 </div>
             ))}
         </div>
