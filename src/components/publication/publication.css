@@ -27,14 +27,23 @@
     background-color: #090e46ab;
     padding: 0.5px 0.5rem;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .button {
+    font-size: 15px;
     background-color: #090e46ab;
     color: #FFFFFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.5s ease;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+.content-container-card {
+    padding: 5px;
 }

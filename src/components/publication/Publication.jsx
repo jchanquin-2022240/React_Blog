@@ -34,23 +34,23 @@ const Publication = (publication) => {
             <img className='post-image' src={publication.image} alt="" />
             <div className='container-card'>
                 <label>Título:</label>
-                <div>{publication.title}</div>
+                <div className='content-container-card'>{publication.title}</div>
             </div>
             <div className='container-card'>
                 <label>Author:</label>
-                <div>{publication.author}</div>
+                <div className='content-container-card'>{publication.author}</div>
             </div>
             <div className='container-card'>
                 <label>Description:</label>
-                <div>{publication.description}</div>
+                <div className='content-container-card'>{publication.description}</div>
             </div>
             <div className='container-card'>
                 <label>Languaje and tools: </label>
-                <div>{publication.tools}</div>
+                <div className='content-container-card'>{publication.tools}</div>
             </div>
             <div className='container-card'>
-                <label>Function: </label>
-                <div>{publication.descriptionFuction}</div>
+                <label >Function: </label>
+                <div className='content-container-card'>{publication.descriptionFuction}</div>
             </div>
             <div className='container-card'>
                 <label>Link: </label><br />
@@ -58,7 +58,7 @@ const Publication = (publication) => {
             </div>
             <div className='container-card'>
                 <label>Date Publication</label>
-                <div>{publication.date}</div>
+                <div className='content-container-card'>{publication.date}</div>
             </div>
             <button className='button' onClick={() => setIsCommentsVisible(!isCommentsVisible)}>
                 {isCommentsVisible ? 'Less Info' : 'More Info'}
