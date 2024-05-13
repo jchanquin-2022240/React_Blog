@@ -5,7 +5,8 @@
 }
 
 .menu {
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -24,7 +25,8 @@
 }
 
 .menu .menu-logo img {
-    width: 200px;
+    width: 275px;
+    object-fit: cover;
     height: 100px;
     padding-top: 10px;
     padding-bottom: 10px;
