@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/navbar/Navbar';
 import { Footer } from '../../components/footer/Footer';
 import { getPosts } from '../../services';
-import { Publication } from '../../components/publication/Publication';
+import { PublicationListContainer } from '../../components/publication/Publication';
 import { Comment } from '../../components/comment/Comment';
 
 export const DashboardPage = () => {
+    const [shouldUpdate, setShouldUpdate] = useState(true);
     const [publication, setPublication] = useState([]);
     const [postById, setPostById] = useState(null);
 
@@ -19,6 +20,7 @@ export const DashboardPage = () => {
     }, [postById])
 
     useEffect(() => {
+        if (!shouldUpdate) return;
         const fetchPublications = async () => {
             try {
                 const response = await getPosts();
@@ -33,12 +35,13 @@ export const DashboardPage = () => {
             }
         };
         fetchPublications();
-    }, []);
+        setShouldUpdate(false);
+    }, [shouldUpdate]);
 
     return (
         <>
             {postById === null && (
-                <Publication publications={publication} onMoreInfoClick={handleMoreInfoClick} />
+                <PublicationListContainer publications={publication} onMoreInfoClick={handleMoreInfoClick} setShouldUpdate={setShouldUpdate} />
             )}
         </>
     )

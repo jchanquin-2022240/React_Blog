@@ -3,7 +3,7 @@ import { addComment } from '../../services';
 import { Input } from '../Input';
 import './comment.css'
 
-export const Comment = ({ comments, publicationId }) => {
+export const Comment = ({ comments, publicationId, setShouldUpdate }) => {
     console.log({ comments })
     const [formState, setFormState] = useState({
         commentUser: {
@@ -52,17 +52,16 @@ export const Comment = ({ comments, publicationId }) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log({ publicationId })
         const response = await addComment(
             publicationId,
             formState.commentUser.value,
             formState.commentMain.value,
         );
 
-        if (!response.ok) {
-            console.error("SOMETHING WRONG ADDING NEW COMMENT")
-            return;
+        if (response.status === 200) {
+            setShouldUpdate(true);
         }
-
         setFormState({
             commentUser: { value: "" },
             commentMain: { value: "" },
