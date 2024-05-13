@@ -5,13 +5,9 @@
 }
 
 .menu {
-    /*position: absolute;*/
-    position: fixed;
+    position: absolute;
+    width: 100%;
     top: 0;
-    left: 0;
-    right: 0;
-    left: 0;
-    justify-content: space-between;
     background-color: #0c1444;
 }
 
@@ -25,9 +21,9 @@
 }
 
 .menu .menu-logo img {
-    width: 275px;
-    object-fit: cover;
-    height: 100px;
+    width: 200px;
+/*    object-fit: cover;*/
+    height: 55px;
     padding-top: 10px;
     padding-bottom: 10px;
     transition: transform 0.5s ease;

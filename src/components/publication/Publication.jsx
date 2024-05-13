@@ -53,14 +53,14 @@ const Publication = (publication) => {
                 <div>{publication.descriptionFuction}</div>
             </div>
             <div className='container-card'>
-                <label>Link: </label>
+                <label>Link: </label><br />
                 <a href={publication.link}>{publication.link}</a>
             </div>
             <div className='container-card'>
                 <label>Date Publication</label>
                 <div>{publication.date}</div>
             </div>
-            <button onClick={() => setIsCommentsVisible(!isCommentsVisible)}>
+            <button className='button' onClick={() => setIsCommentsVisible(!isCommentsVisible)}>
                 {isCommentsVisible ? 'Less Info' : 'More Info'}
             </button>
             {isCommentsVisible && <Comment comments={publication.comments} publicationId={publication.id} setShouldUpdate={publication.setShouldUpdate} />}
