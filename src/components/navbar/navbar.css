@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.menu {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background-color: #0c1444;
+}
+
+
+.menu .menu-logo, .logo {
+    display: flex;
+    margin: 0 20px;
+    font-size: 20px;
+    color: #FFFFFF;
+    justify-content: center;
+}
+
+.menu .menu-logo img {
+    width: 200px;
+/*    object-fit: cover;*/
+    height: 55px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: transform 0.5s ease;
+}
+
+.menu-logo img:hover {
+    transform: scale(1.2);
+}

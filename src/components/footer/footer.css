@@ -1,0 +1,13 @@
+.footer-container{
+    text-align: center;
+    background-color: #0c1444;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+}
+
+.copyright{
+    color: white;
+    font-size: 15px;
+}
