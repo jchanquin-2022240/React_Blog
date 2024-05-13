@@ -30,6 +30,7 @@ const Publication = (publication) => {
     const [isCommentsVisible, setIsCommentsVisible] = useState(false);
 
     return (
+        <div className='container-post-card'>
         <div className='post-card'>
             <img className='post-image' src={publication.image} alt="" />
             <div className='container-card'>
@@ -64,6 +65,7 @@ const Publication = (publication) => {
                 {isCommentsVisible ? 'Less Info' : 'More Info'}
             </button>
             {isCommentsVisible && <Comment comments={publication.comments} publicationId={publication.id} setShouldUpdate={publication.setShouldUpdate} />}
+        </div>
         </div>
     )
 }

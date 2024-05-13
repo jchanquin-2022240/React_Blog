@@ -1,3 +1,9 @@
+.container-post-card{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 40px;
+}
 .post-card {
     width: 300px;
     border: 1px solid #5fafb0ab;

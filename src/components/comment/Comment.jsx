@@ -71,6 +71,7 @@ export const Comment = ({ comments, publicationId, setShouldUpdate }) => {
     return (
         <div className='comments-container'>
             <div className='container-details'>
+                <hr />
                 <h3 className='subtitle'>Comments</h3>
                 <div className="comment-form-item">
                     <form className='comment-form'>
@@ -96,16 +97,18 @@ export const Comment = ({ comments, publicationId, setShouldUpdate }) => {
                             Add comment
                         </button>
                     </form>
-                    <div>
+                    <div className='dropdown-content'>
+                        <hr />
                         {comments.length > 0 ? (
                             comments.map((comment, index) => (
                                 <div key={index} className="comment-card">
                                     <div>
-                                        <label>User comment: {comment.commentUser}</label>
+                                        <label>Name: {comment.commentUser}</label>
                                     </div>
                                     <div>
                                         <label>Comment: {comment.commentMain}</label>
                                     </div>
+                                    <hr />
                                 </div>
                             ))
                         ) : (
