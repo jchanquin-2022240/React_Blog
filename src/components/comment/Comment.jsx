@@ -66,32 +66,12 @@ export const Comment = ({ comments, publicationId, setShouldUpdate }) => {
             commentUser: { value: "" },
             commentMain: { value: "" },
         });
-
-        // fetchPublicationDetails();
     };
-
-    // const fetchPublicationDetails = async () => {
-    //     try {
-    //         if (publicationId) {
-    //             const data = await searchPost(publicationId);
-    //             setComment(data);
-    //         } else {
-    //             console.error('No publicationId provided');
-    //         }
-    //     } catch (error) {
-    //         console.error('Error fetching publication details:', error);
-    //     }
-    // };
-
-    useEffect(() => {
-        // fetchPublicationDetails();
-        console.log('Fetching publication details for id:', publicationId);
-    }, [publicationId]);
 
     return (
         <div className='comments-container'>
             <div className='container-details'>
-                <h2>Comments</h2>
+                <h3 className='subtitle'>Comments</h3>
                 <div className="comment-form-item">
                     <form className='comment-form'>
                         <Input
