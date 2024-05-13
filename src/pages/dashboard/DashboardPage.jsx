@@ -3,17 +3,11 @@ import { Navbar } from '../../components/navbar/Navbar';
 import { Footer } from '../../components/footer/Footer';
 import { getPosts } from '../../services';
 import { PublicationListContainer } from '../../components/publication/Publication';
-import { Comment } from '../../components/comment/Comment';
 
 export const DashboardPage = () => {
     const [shouldUpdate, setShouldUpdate] = useState(true);
     const [publication, setPublication] = useState([]);
     const [postById, setPostById] = useState(null);
-
-    const handleMoreInfoClick = (id) => {
-        console.log('Read more info clicked:', id);
-        setPostById(id);
-    };
 
     useEffect(() => {
         console.log('Selected post id:', postById);
@@ -40,9 +34,13 @@ export const DashboardPage = () => {
 
     return (
         <>
-            {postById === null && (
-                <PublicationListContainer publications={publication} onMoreInfoClick={handleMoreInfoClick} setShouldUpdate={setShouldUpdate} />
-            )}
+            <Navbar />
+            <div>
+                {postById === null && (
+                    <PublicationListContainer publications={publication} setShouldUpdate={setShouldUpdate} />
+                )}
+            </div>
+            <Footer />
         </>
     )
 }

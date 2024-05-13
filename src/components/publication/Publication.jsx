@@ -13,10 +13,13 @@ export const PublicationListContainer = ({ publications, onMoreInfoClick, setSho
                     key={publication._id}
                     description={publication.description}
                     tools={publication.tools}
+                    descriptionFuction={publication.descriptionFuntion}
                     comments={publication.comments}
                     id={publication._id}
                     setShouldUpdate={setShouldUpdate}
                     image={publication.image}
+                    link={publication.link}
+                    date={publication.date} 
                 />
             ))}
         </div>
@@ -30,20 +33,32 @@ const Publication = (publication) => {
         <div className='post-card'>
             <img className='post-image' src={publication.image} alt="" />
             <div className='container-card'>
-                <label>Título</label>
+                <label>Título:</label>
                 <div>{publication.title}</div>
             </div>
             <div className='container-card'>
-                <label>author</label>
+                <label>Author:</label>
                 <div>{publication.author}</div>
             </div>
             <div className='container-card'>
-                <label>description</label>
+                <label>Description:</label>
                 <div>{publication.description}</div>
             </div>
             <div className='container-card'>
-                <label>Languaje and tools</label>
+                <label>Languaje and tools: </label>
                 <div>{publication.tools}</div>
+            </div>
+            <div className='container-card'>
+                <label>Function: </label>
+                <div>{publication.descriptionFuction}</div>
+            </div>
+            <div className='container-card'>
+                <label>Link: </label>
+                <a href={publication.link}>{publication.link}</a>
+            </div>
+            <div className='container-card'>
+                <label>Date Publication</label>
+                <div>{publication.date}</div>
             </div>
             <button onClick={() => setIsCommentsVisible(!isCommentsVisible)}>
                 {isCommentsVisible ? 'Less Info' : 'More Info'}
