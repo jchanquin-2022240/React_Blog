@@ -35,11 +35,9 @@ export const DashboardPage = () => {
     return (
         <>
             <Navbar />
-            <div>
-                {postById === null && (
-                    <PublicationListContainer publications={publication} setShouldUpdate={setShouldUpdate} />
-                )}
-            </div>
+            {postById === null && (
+                <PublicationListContainer publications={publication} setShouldUpdate={setShouldUpdate} />
+            )}
             <Footer />
         </>
     )

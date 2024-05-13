@@ -4,12 +4,12 @@ import './navbar.css'
 export const Navbar = () => {
     return (
         <div className='container-navbar'>
-            <header>
-                <nav className='navbar'>
-                    <div className='logo'>
+            <header class="header">
+                <div class="menu">
+                    <label class="menu-logo">
                         <img src={logo} alt="Logo-Kinalito" />
-                    </div>
-                </nav>
+                    </label>
+                </div>
             </header>
         </div>
     )
