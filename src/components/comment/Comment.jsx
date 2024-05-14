@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { addComment } from '../../services';
+import { addComment, searchPost } from '../../services';
 import { Input } from '../Input';
 import './comment.css'
 
-export const Comment = ({ comments, publicationId, setShouldUpdate }) => {
-    console.log({ comments })
+export const Comment = ({ publicationId }) => {
+    const [commentDetails, setCommentDetails] = useState(null);
+
     const [formState, setFormState] = useState({
         commentUser: {
             value: '',
@@ -52,71 +53,138 @@ export const Comment = ({ comments, publicationId, setShouldUpdate }) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log({ publicationId })
         const response = await addComment(
             publicationId,
             formState.commentUser.value,
             formState.commentMain.value,
         );
 
-        if (response.status === 200) {
-            setShouldUpdate(true);
-        }
         setFormState({
             commentUser: { value: "" },
             commentMain: { value: "" },
         });
+
+        fetchPublicationDetails();
     };
+
+    const fetchPublicationDetails = async () => {
+        try {
+            if (publicationId) {
+                const data = await searchPost(publicationId);
+                setCommentDetails(data);
+            } else {
+                console.error('No publicationId provided');
+            }
+        } catch (error) {
+            console.error('Error fetching publication details:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchPublicationDetails();
+        console.log('Fetching publication details for id:', publicationId);
+    }, [publicationId]);
+
+    useEffect(() => {
+        const fetchPublicationDetails = async () => {
+            try {
+                if (publicationId) {
+                    const data = await searchPost(publicationId);
+                    setCommentDetails(data);
+                } else {
+                    console.error('No publicationId provided');
+                }
+            } catch (error) {
+                console.error('Error fetching publication details:', error);
+            }
+        }
+        fetchPublicationDetails();
+        console.log('Fetching publication details for id:', publicationId);
+    }, [publicationId]);
+    console.log('Publication details:', commentDetails);
 
     return (
         <div className='comments-container'>
-            <div className='container-details'>
-                <hr />
-                <h3 className='subtitle'>Comments</h3>
-                <div className="comment-form-item">
-                    <form className='comment-form'>
-                        <Input
-                            field='commentUser'
-                            label='User'
-                            value={formState.commentUser.value}
-                            onChangeHandler={handleInputValueChange}
-                            onBlurHandler={handleInputValidationOnBlur}
-                            type='text'
-                            className='comment-input'
-                        />
-                        <Input
-                            field='commentMain'
-                            label='Comment'
-                            value={formState.commentMain.value}
-                            onChangeHandler={handleInputValueChange}
-                            onBlurHandler={handleInputValidationOnBlur}
-                            type='text'
-                            className='comment-input'
-                        />
-                        <button onClick={handleFormSubmit} className='comment-button'>
-                            Add comment
-                        </button>
-                    </form>
-                    <div className='dropdown-content'>
-                        <hr />
-                        {comments.length > 0 ? (
-                            comments.map((comment, index) => (
-                                <div key={index} className="comment-card">
-                                    <div>
-                                        <label>Name: {comment.commentUser}</label>
+            {commentDetails && (
+                <div className='container-details'>
+                    <div className='container-post-card'>
+                        <div className='post-card'>
+                            <div className='container-card-item'>
+                                <label>Título:</label>
+                                <div>{commentDetails.data.title}</div>
+                            </div>
+                            <div className='container-card-item'>
+                                <label>Author:</label>
+                                <div>{commentDetails.data.author}</div>
+                            </div>
+                            <div className='container-card-item'>
+                                <label>Description:</label>
+                                <div>{commentDetails.data.description}</div>
+                            </div>
+                            <div className='container-card-item'>
+                                <label>Languaje and tools: </label>
+                                <div>{commentDetails.data.tools}</div>
+                            </div>
+                            <div className='container-card-item'>
+                                <label >Function: </label>
+                                <div>{commentDetails.data.descriptionFuntion}</div>
+                            </div>
+                            <div className='container-card-item'>
+                                <label>Link: </label><br />
+                                <a href={commentDetails.data.link}>{commentDetails.data.link}</a>
+                            </div>
+                            <img className='post-image' src={commentDetails.data.image} alt="" />
+                            <div className='container-card'>
+                                <label>Date: </label>
+                                <div>{commentDetails.data.date}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <h3 className='subtitle'>Comments</h3>
+                    <div className="comment-form-item">
+                        <form className='comment-form'>
+                            <Input
+                                field='commentUser'
+                                label='User'
+                                value={formState.commentUser.value}
+                                onChangeHandler={handleInputValueChange}
+                                onBlurHandler={handleInputValidationOnBlur}
+                                type='text'
+                                className='comment-input'
+                            />
+                            <Input
+                                field='commentMain'
+                                label='Comment'
+                                value={formState.commentMain.value}
+                                onChangeHandler={handleInputValueChange}
+                                onBlurHandler={handleInputValidationOnBlur}
+                                type= 'text'
+                                className='comment-input'
+                            />
+                            <button onClick={handleFormSubmit} className='comment-button'>
+                                Add comment
+                            </button>
+                        </form>
+                        <div>
+                            {commentDetails && commentDetails.data && commentDetails.data.comments && commentDetails.data.comments.length > 0 ? (
+                                commentDetails.data.comments.map((comment, index) => (
+                                    <div key={index} className="comment-card">
+                                        <div>
+                                            <label>User: {comment.commentUser}</label>
+                                        </div>
+                                        <div>
+                                            <label>Comment: {comment.commentMain}</label>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <label>Comment: {comment.commentMain}</label>
-                                    </div>
-                                    <hr />
-                                </div>
-                            ))
-                        ) : (
-                            <div className="no-comments">There are no comments</div>
-                        )}
+                                ))
+                            ) : (
+                                <div className="no-comments">No hay comentarios</div>
+                            )}
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     )
 

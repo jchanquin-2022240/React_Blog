@@ -4,9 +4,9 @@ import './navbar.css'
 export const Navbar = () => {
     return (
         <div className='container-navbar'>
-            <header class="header">
-                <div class="menu">
-                    <label class="menu-logo">
+            <header className="header">
+                <div className="menu">
+                    <label className="menu-logo">
                         <img src={logo} alt="Logo-Kinalito" />
                     </label>
                 </div>

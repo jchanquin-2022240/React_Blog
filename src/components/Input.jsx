@@ -1,4 +1,3 @@
-
 export const Input = ({
     field,
     label,
@@ -31,8 +30,8 @@ export const Input = ({
                     value={value}
                     onChange={handleValueChange}
                     onBlur={handleInputBlur}
-                    rows={4}
-                    style={{maxWidth: '600px'}}
+                    rows={5}
+                    style={{ maxWidth: '600px' }}
                 />
             ) : (
                 <input

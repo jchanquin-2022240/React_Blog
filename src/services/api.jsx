@@ -7,7 +7,7 @@ const api = axios.create({
 
 export const getPosts = async () => {
     try {
-        return await api.get('/publication/posts')
+        return await api.get('/posts')
     } catch (e) {
         return {
             error: true,
@@ -21,7 +21,7 @@ export const addComment = async (id, commentUser, commentMain) => {
         console.log('id', id)
         console.log('commentUser', commentUser)
         console.log('commentMain', commentMain)
-        return await api.put(`/publication/addComment/${id}`, { commentUser, commentMain })
+        return await api.put(`/addComment/${id}`, { commentUser, commentMain })
     } catch (e) {
         return ({
             error: true,
@@ -32,7 +32,7 @@ export const addComment = async (id, commentUser, commentMain) => {
 
 export const searchPost = async (id) => {
     try {
-        return await api.get(`/publication/${id}`)
+        return await api.get(`/post/${id}`)
     } catch (e) {
         return {
             error: true,
