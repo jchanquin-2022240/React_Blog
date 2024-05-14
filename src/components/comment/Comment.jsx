@@ -154,7 +154,6 @@ export const Comment = ({ publicationId }) => {
                                 onChangeHandler={handleInputValueChange}
                                 onBlurHandler={handleInputValidationOnBlur}
                                 type='text'
-                                className='comment-input'
                             />
                             <Input
                                 field='commentMain'
@@ -163,7 +162,6 @@ export const Comment = ({ publicationId }) => {
                                 onChangeHandler={handleInputValueChange}
                                 onBlurHandler={handleInputValidationOnBlur}
                                 type='text'
-                                className='comment-input'
                             />
                             <br />
                             <button onClick={handleFormSubmit} className='comment-button'>
