@@ -6,19 +6,17 @@ import { PublicationListContainer } from '../../components/publication/Publicati
 import { Comment } from '../../components/comment/Comment';
 
 export const DashboardPage = () => {
-    //const [shouldUpdate, setShouldUpdate] = useState(true);
     const [publication, setPublication] = useState([]);
-    const [postById, setPostById] = useState(null);
     const [clickPublicationId, setClickPublicationId] = useState(null);
 
     const handleReadMoreClick = (id) => {
-        console.log('Read more clicked:', id);
+        
         setClickPublicationId(id);
     };
 
     useEffect(() => {
-        console.log('Selected post id:', postById);
-    }, [postById])
+        console.log('Selected post id:', clickPublicationId);
+    }, [clickPublicationId])
 
     useEffect(() => {
         const fetchPublications = async () => {

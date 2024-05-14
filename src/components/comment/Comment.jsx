@@ -100,7 +100,7 @@ export const Comment = ({ publicationId }) => {
             }
         }
         fetchPublicationDetails();
-        console.log('Fetching publication details for id:', publicationId);
+        
     }, [publicationId]);
     console.log('Publication details:', commentDetails);
 
