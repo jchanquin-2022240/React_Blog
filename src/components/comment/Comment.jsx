@@ -182,7 +182,7 @@ export const Comment = ({ publicationId }) => {
                                     </div>
                                 ))
                             ) : (
-                                <div className="no-comments">No hay comentarios</div>
+                                <div className="no-comments">There are not comments</div>
                             )}
                         </div>
                     </div>
