@@ -134,12 +134,14 @@ hr {
 }
 
 .back{
-    background-color: #5fafb0ab;
+    background-color: #a7c8c8ab;
     border: none;
     padding: 0;
 }
 
 .back img {
+    width: 40px;
+    height: 40px;
     display: block;
 }
 

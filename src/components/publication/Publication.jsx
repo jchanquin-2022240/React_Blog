@@ -22,22 +22,6 @@ export const PublicationListContainer = ({ publications, onMoreInfoClick }) => {
                             <label>Description:</label>
                             <div className='content-container-card'>{publication.description}</div>
                         </div>
-                        {/* <div className='container-card'>
-                            <label>Languaje and tools: </label>
-                            <div className='content-container-card'>{publication.tools}</div>
-                        </div>
-                        <div className='container-card'>
-                            <label >Function: </label>
-                            <div className='content-container-card'>{publication.descriptionFuction}</div>
-                        </div>
-                        <div className='container-card'>
-                            <label>Link: </label><br />
-                            <a href={publication.link}>{publication.link}</a>
-                        </div>
-                        <div className='container-card'>
-                            <label>Date Publication</label>
-                            <div className='content-container-card'>{publication.date}</div>
-                        </div> */}
                         <button className='button' onClick={() => onMoreInfoClick(publication._id)}>
                             More Info
                         </button>
