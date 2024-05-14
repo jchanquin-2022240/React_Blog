@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { addComment, searchPost } from '../../services';
+import back from '../../assets/img/flecha-izquierda.png';
 import { Input } from '../Input';
 import './comment.css'
 
@@ -104,44 +105,46 @@ export const Comment = ({ publicationId }) => {
     console.log('Publication details:', commentDetails);
 
     return (
-        <div className='comments-container'>
+        <div className='comments-details-container'>
             {commentDetails && (
-                <div className='container-details'>
-                    <div className='container-post-card'>
-                        <div className='post-card'>
-                            <div className='container-card-item'>
-                                <label>Título:</label>
-                                <div>{commentDetails.data.title}</div>
-                            </div>
-                            <div className='container-card-item'>
-                                <label>Author:</label>
-                                <div>{commentDetails.data.author}</div>
-                            </div>
-                            <div className='container-card-item'>
-                                <label>Description:</label>
-                                <div>{commentDetails.data.description}</div>
-                            </div>
-                            <div className='container-card-item'>
-                                <label>Languaje and tools: </label>
-                                <div>{commentDetails.data.tools}</div>
-                            </div>
-                            <div className='container-card-item'>
-                                <label >Function: </label>
-                                <div>{commentDetails.data.descriptionFuntion}</div>
-                            </div>
-                            <div className='container-card-item'>
-                                <label>Link: </label><br />
-                                <a href={commentDetails.data.link}>{commentDetails.data.link}</a>
-                            </div>
-                            <img className='post-image' src={commentDetails.data.image} alt="" />
-                            <div className='container-card'>
-                                <label>Date: </label>
-                                <div>{commentDetails.data.date}</div>
-                            </div>
+                
+                <div className='container-comment-card'>
+                    <button className='back' onClick={() => window.location.reload()}>
+                        <img src={back} alt="Back"></img>
+                    </button>
+                    <div className='post-card-item'>
+                        <div className='container-card-item'>
+                            <label>Título:</label>
+                            <div className='content-card'>{commentDetails.data.title}</div>
+                        </div>
+                        <div className='container-card-item'>
+                            <label>Author:</label>
+                            <div className='content-card'>{commentDetails.data.author}</div>
+                        </div>
+                        <div className='container-card-item'>
+                            <label>Description:</label>
+                            <div className='content-card'>{commentDetails.data.description}</div>
+                        </div>
+                        <div className='container-card-item'>
+                            <label>Languaje and tools: </label>
+                            <div className='content-card'>{commentDetails.data.tools}</div>
+                        </div>
+                        <div className='container-card-item'>
+                            <label >Function: </label>
+                            <div className='content-card'>{commentDetails.data.descriptionFuntion}</div>
+                        </div>
+                        <div className='container-card-item'>
+                            <label>Link: </label><br />
+                            <a className='content-card' href={commentDetails.data.link}>{commentDetails.data.link}</a>
+                        </div>
+                        <img className='post-image' src={commentDetails.data.image} alt="" />
+                        <div className='container-card-item'>
+                            <label>Date: </label>
+                            <div className='content-card'>{commentDetails.data.date}</div>
                         </div>
                     </div>
                     <hr />
-                    <h3 className='subtitle'>Comments</h3>
+                    <h2 className='subtitle'>Comments</h2>
                     <div className="comment-form-item">
                         <form className='comment-form'>
                             <Input
@@ -159,23 +162,25 @@ export const Comment = ({ publicationId }) => {
                                 value={formState.commentMain.value}
                                 onChangeHandler={handleInputValueChange}
                                 onBlurHandler={handleInputValidationOnBlur}
-                                type= 'text'
+                                type='text'
                                 className='comment-input'
                             />
+                            <br />
                             <button onClick={handleFormSubmit} className='comment-button'>
                                 Add comment
                             </button>
                         </form>
-                        <div>
+                        <div className='comment-submit'>
                             {commentDetails && commentDetails.data && commentDetails.data.comments && commentDetails.data.comments.length > 0 ? (
                                 commentDetails.data.comments.map((comment, index) => (
                                     <div key={index} className="comment-card">
-                                        <div>
+                                        <div className='comment-user'>
                                             <label>User: {comment.commentUser}</label>
                                         </div>
-                                        <div>
+                                        <div className='comment-main'>
                                             <label>Comment: {comment.commentMain}</label>
                                         </div>
+                                        <hr />
                                     </div>
                                 ))
                             ) : (
